@@ -1,0 +1,36 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat, My home</title>
+    <style>
+      body {
+        text-align: center;
+        background-color: rgb(56, 2, 56);
+        color: aliceblue;
+        font-size: 40px;
+        padding-top: 200px;
+      }
+    </style>
+  </head>
+  
+  <body onload="fade()">
+    <h1 id="intro">Surat</h1>
+    <script>
+      function fade() {
+        i = 1;
+        setInterval(function () {
+          i = i - 0.05;
+          document.getElementById("intro").style.opacity = i;
+          if (i < 0) {
+            window.location = "home.html";
+          }
+        }, 100)
+      }
+    </script>
+  </body>
+  
+  </html>

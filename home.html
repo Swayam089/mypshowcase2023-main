@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="favicon-icon" href="favicon.png">
+    <title>Q&A</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+        * {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(#2b1055, #7597de);
+            min-height: 100vh;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        header .logo {
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header ul li {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        header ul li a {
+            text-decoration: none;
+            padding: 6px 15px;
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        header ul li a:hover,
+        header ul li a.active {
+            background: #fff;
+            color: #2b1055;
+        }
+
+        section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            padding: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #1c0522, transparent);
+            z-index: 100;
+        }
+
+        section img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        section img#moon {
+            mix-blend-mode: screen;
+            position: fixed;
+        }
+
+        section img#mountains_front {
+            z-index: 10;
+
+        }
+
+        #text {
+            position: absolute;
+            color: #fff;
+            white-space: nowrap;
+            font-size: 5vw;
+            z-index: 9;
+        }
+
+        #btn {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 40px;
+            background: #fff;
+            color: #2b1055;
+            font-size: 1.5em;
+            z-index: 9;
+            transform: translateY(100px);
+        }
+
+        .sec {
+            position: relative;
+            padding: 100px;
+            background: #1c0522;
+        }
+
+        .sec h2 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .sec p {
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+        script {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">:)</a>
+        <ul>
+            <li>
+                <a href="form1.html" class="active">Forms</a>
+                <a href="tic-tac-toe.html" class="active">Tic Tac Toe</a>
+            </li>
+        </ul>
+    </header>
+    <section>
+        <img src="stars.png" id="stars">
+        <img src="moon.png" id="moon">
+        <img src="mountains_behind.png" id="mountains_behind">
+        <h2 id="text">Healing You</h2>
+        <a href="#sec" id="btn">Q&A</a>
+        <img src="mountains_front.png" id="mountains_front">
+    </section>
+    <div class="sec" id="sec">
+        <h2>Whats Is healing you and how does it work?</h2>
+        <p>Healing You is program that you have to follow for a month to moniter you feelings at night, every night for
+            a month you have to fill a form how how your day went and what all you exprinced and the website will store
+            it in an database.We have tried to make our website free and safe to accses and becuase of that our website
+            can be used by many people without hessitation.</p>
+        <h2>What is mental health</h2>
+        <p>
+            According to WHO, there is no single 'official' definition of mental health. Mental health refers to a
+            person's psychological, emotional, and social well-being; it influences what they feel and how they think,
+            and behave. The state of cognitive and behavioural well-being is referred to as mental health. The term
+            'mental health' is also used to refer to the absence of mental disease.<br><br>Mental health means keeping
+            our minds healthy. Mankind generally is more focused on keeping their physical body healthy. People tend to
+            ignore the state of their minds. Human superiority over other animals lies in his superior mind. Man has
+            been able to control life due to his highly developed brain.So, it becomes very important for a man to keep
+            both his body and mind fit and healthy. Both physical and mental health are equally important for better
+            performance and results.
+        </p>
+        <h2>Importance Of mental health</h2>
+        <p>
+            An emotionally fit and stable person always feels vibrant and truly alive and can easily manage emotionally
+            difficult situations. To be emotionally strong, one has to be physically fit too. Although mental health is
+            a personal issue, what affects one person may or may not affect another; yet, several key elements lead to
+            mental health issues.<br><br>
+            Many emotional factors have a significant effect on our fitness level like depression, aggression, negative
+            thinking, frustration, and fear, etc. A physically fit person is always in a good mood and can easily cope
+            up with situations of distress and depression resulting in regular training contributing to a good physical
+            fitness standard.<br><br>Mental fitness implies a state of psychological well-being. It denotes having a
+            positive sense of how we
+            feel, think, and act, which improves one's ability to enjoy life. It contributes to one's inner ability to
+            be self-determined. It is a proactive, positive term and forsakes negative thoughts that may come to mind.
+            The term mental fitness is increasingly being used by psychologists, mental health practitioners, schools,
+            organisations, and the general population to denote logical thinking, clear comprehension, and reasoning
+            ability.
+        </p>
+    </div>
+    <script>
+        let stars = document.getElementById('stars');
+        let moon = document.getElementById('moon');
+        let mountains_behind = document.getElementById('mountains_behind');
+        let text = document.getElementById('text');
+        let mountains_front = document.getElementById('mountain_front');
+        let btn = document.getElementById('btn');
+        window.addEventListener('scroll', function () {
+            let value = window.scrollY;
+            stars.style.left = value * 0.25 + 'px';
+            moon.style.top = value * 1.05 + 'px';
+            mountains_behind.style.top = value * 0.5 + 'px';
+            mountains_front.style.top = value * 0 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            text.style.marginRight = value * 4 + 'px';
+        })
+    </script>
+</body>
+
+</html>

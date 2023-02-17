@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai Tic-Tac-Toe</title>
+    <link rel="shortcut icon" href="favicon.png" type="favicon-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            #game {
+                font-size: 3em;
+            }
+
+            .game {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Tablets and small laptops */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            body {
+                font-size: 18px;
+            }
+
+            #game {
+                font-size: 4em;
+            }
+
+            .game {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Desktops and larger screens */
+        @media (min-width: 1024px) {
+            body {
+                font-size: 20px;
+            }
+
+            #game {
+                font-size: 5em;
+            }
+
+            .game {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #2b1055;
+            height: 100%;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        table {
+            border-radius: 20px;
+        }
+
+        #game {
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 1000;
+            color: white;
+            font-size: 5em;
+        }
+
+        #i {
+            border-collapse: collapse;
+            border-radius: 20px;
+        }
+
+        #log {
+            text-decoration: none;
+            display: block;
+            color: #fff;
+            background-color: #06BF06;
+            padding: 14px 16px;
+            border-radius: 20px;
+            text-align: center;
+            border: 3px solid darkgreen;
+        }
+
+        #log:hover {
+            background-color: #000;
+            color: aqua;
+        }
+
+        .game {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            vertical-align: middle;
+            border: 4px solid white;
+        }
+
+        #reset-button {
+            border-radius: 20px;
+            border: 1px solid darkred;
+            background-color: orange;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        #reset-button:hover {
+            background-color: black;
+            color: aqua;
+        }
+
+        table,
+        td,
+        tr {
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <table>
+            <tr>
+                <td><img src="favicon.png" width="50px"></td>
+                <td>
+                    <h1>Tic Tac Toe With AI</h1>
+                </td>
+                <td><a id="log" href="index.html">Home Page</a></td>
+            </tr>
+        </table>
+    </center>
+    <div class="game-container">
+        <div id="game">
+            <table id="i">
+                <tr>
+                    <td class="game" id="cell-0"></td>
+                    <td class="game" id="cell-1"></td>
+                    <td class="game" id="cell-2"></td>
+                </tr>
+                <tr>
+                    <td class="game" id="cell-3"></td>
+                    <td class="game" id="cell-4"></td>
+                    <td class="game" id="cell-5"></td>
+                </tr>
+                <tr>
+                    <td class="game" id="cell-6"></td>
+                    <td class="game" id="cell-7"></td>
+                    <td class="game" id="cell-8"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br>
+    <center><button id="reset-button">Reset Game</button></center>
+    <br>
+    <script>
+        let board = ["", "", "", "", "", "", "", "", ""];
+        let player = "X";
+        let gameOver = false;
+        let ai = "O";
+
+        function checkWin() {
+            // check rows
+            for (let i = 0; i < 9; i += 3) {
+                if (board[i] === player && board[i + 1] === player && board[i + 2] === player) {
+                    return true;
+                }
+            }
+
+            // check columns
+            for (let i = 0; i < 3; i++) {
+                if (board[i] === player && board[i + 3] === player && board[i + 6] === player) {
+                    return true;
+                }
+            }
+
+            // check diagonals
+            if (board[0] === player && board[4] === player && board[8] === player) {
+                return true;
+            }
+            if (board[2] === player && board[4] === player && board[6] === player) {
+                return true;
+            }
+
+            return false;
+        }
+
+        function checkTie() {
+            for (let i = 0; i < 9; i++) {
+                if (board[i] === "") {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function aiMove() {
+            let emptyCells = [];
+            for (let i = 0; i < 9; i++) {
+                if (board[i] === "") {
+                    emptyCells.push(i);
+                }
+            }
+
+            let randomIndex = Math.floor(Math.random() * emptyCells.length);
+            let randomCell = emptyCells[randomIndex];
+            board[randomCell] = ai;
+            document.getElementById(`cell-${randomCell}`).innerHTML = ai;
+        }
+
+        for (let i = 0; i < 9; i++) {
+            let cell = document.getElementById(`cell-${i}`);
+            cell.addEventListener("click", function () {
+                if (!gameOver && board[i] === "") {
+                    board[i] = player;
+                    cell.innerHTML = player;
+                    if (checkWin()) {
+                        alert(`Player ${player} wins!`);
+                        gameOver = true;
+                    } else if (checkTie()) {
+                        alert("Tie game!");
+                        gameOver = true;
+                    } else {
+                        aiMove();
+                        if (checkWin()) {
+                            alert(`Player ${ai} wins!`);
+                            gameOver = true;
+                        } else if (checkTie()) {
+                            alert("Tie game!");
+                            gameOver = true;
+                        }
+                    }
+                }
+            });
+        }
+        let resetButton = document.getElementById("reset-button");
+        resetButton.addEventListener("click", function () {
+            board = ["", "", "", "", "", "", "", "", ""];
+            player = "X";
+            gameOver = false;
+            for (let i = 0; i < 9; i++) {
+                let cell = document.getElementById(`cell-${i}`);
+                cell.innerHTML = "";
+            }
+        });
+        let screenWidth = window.innerWidth;
+        let gameContainer = document.querySelector('.game-container');
+
+        if (screenWidth < 600) {
+            gameContainer.style.width = "300px";
+            gameContainer.style.height = "300px";
+        } else if (screenWidth < 400) {
+            gameContainer.style.width = "200px";
+            gameContainer.style.height = "200px";
+        }
+
+    </script>
+</body>
+
+</html>
